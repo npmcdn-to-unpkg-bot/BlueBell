@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <title>Forkky - Admin Page</title>
+    
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+</head>
+    
+<body ng-app="">
+    
+<!--    Navigation bar area-->
+    
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <a class="navbar-brand" href="#" style="font-family:verdana;font-size: 21px; color: #fff">Forkky - Admin Page</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+
+<div class="container">
+    
+    <hr>
+    
+<!--    Search Section-->
+    
+    <div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Search..." ng-model="search">{{search}}
+              <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" name="action"><span class="glyphicon glyphicon-search"></span> Search</button>
+             </span>
+             </div><!-- /input-group -->
+        </div>
+	</div>
+</div>
+<!--    Search Ends-->
+     
+    <hr>
+    
+    <a href="#" class="btn btn-primary">Add Restaurant</a> &nbsp; &nbsp;
+    <a href="#" class="btn btn-primary">Add Speciality_Item</a> &nbsp; &nbsp;
+    <a href="#" class="btn btn-primary">Add Location/ Area</a> &nbsp; &nbsp;
+    <a href="#" class="btn btn-primary">Add Image</a> &nbsp; &nbsp;
+    <a href="#" class="btn btn-primary">Add User</a> &nbsp; &nbsp;
+    <a href="#" class="btn btn-primary">Add Comment</a> &nbsp; &nbsp;
+    
+    <hr>
+    
+     </div> 
+    
+    <!--    form container starts --> 
+    
+     <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        
+                         <h2> Add Restaurant</h2>
+
+  <form role="form" method="post">
+    
+    <div class="form-group">
+      <label for="restaurant_name">restaurant_Name:</label>
+      <input type="text" class="form-control" name="restaurant_name" placeholder="Enter Restaurant name">
+    </div>
+    
+    <div class="form-group">
+      <label for="restaurant_address">restaurant_Address:</label>
+      <input type="text" class="form-control" name="restaurant_address" placeholder="Enter Restaurant address">
+    </div>
+
+    <div class="form-group">
+      <label for="restaurant_location">restaurant_Location:</label>
+      <select name="restaurant_location" style="min-width: 555px;min-height: 35px">
+        <%#locations%>
+           <option value="<%location_id%>"><% location %></option>
+        <%/locations%>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label for="about">About:</label>
+      <textarea cols="76" rows="5" name="about" placeholder="About the Restaurant"></textarea>
+    </div>
+      
+      <div class="form-group">
+      <label for="restaurant_phone">restaurant Phone:</label>
+      <input type="text" class="form-control" name="restaurant_phone" placeholder="Enter Phone Numbers">
+    </div>
+      
+      <div class="form-group">
+      <label for="restaurant_price"> Price for two:</label>
+      <input type="text" class="form-control" name="restaurant_price" placeholder="Enter Cost for two">
+    </div>
+      
+      <div class="form-group">
+      <label for="working_hours">restaurant_OpeningHours:</label>
+      <input type="text" class="form-control" name="working_hours" placeholder="Enter Opening Hours">
+    </div>
+      
+    <div class="form-group">
+      <label for="menu_path"> Upload Menu:</label>
+      <input type="file"  name="menu_path" placeholder="Enter menu file path">
+    </div>
+      
+    <div class="form-group">
+      <label for="speciality_item">Speciality Item:</label>
+      <input type="text" class="form-control" name="speciality_item" placeholder="Enter Speciality Item ID /Link">
+    </div>
+      
+      <div class="form-group">
+      <label for="restaurant_ProfilePic">restaurant_ProfilePic:</label>
+      <input type="file" name="restaurant_profilepic" placeholder="Enter Profile Pic path">
+    </div>
+
+      <div class="form-group">
+      <label for="restaurant_MorePic">restaurant_MorePic:</label>
+      <input type="text" class="form-control" name="restaurant_MorePic" placeholder="Enter More Pic path">
+    </div>
+      
+       <div class="form-group">
+      <label for="restaurant_rating">restaurant_Rating:</label>
+      <input type="text" class="form-control" name="restaurant_rating" placeholder="Enter Restaurant Rating -Hearts">
+    </div>
+      
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+    
+<!--    form ends--> 
+                                          
+                    </div>
+                </div>
+                        
+           <div ng-controller="restController">
+                <li ng-repeat="cust in customers">
+                    {{cust.name}}
+                </li>
+            </div>
+                
+            </div>
+    
+   
+    <!-- Footer -->
+    <hr>
+    <footer>
+        <div class="container text-center">
+            <p>footer</p>
+        </div>
+    </footer>
+                    
+    <script src="javascripts/angular.js"></script>
+    <script src="javascripts/angular-route.min.js"></script>
+<!--    <script src="javascripts/module.js"></script>
+    <script src="javascripts/controllers/restController.js"></script>-->
+                    <script src="../app/controllers/restController.js"></script>
+                    <script src="../app/module.js"></script>
+
+</body> 
+</html>
